@@ -5,18 +5,20 @@ include './Classes/includeClasses.php';
 
 $db = new DataBase();
 $auth = new Auth($db);
-$login;
-$password;
+$login = '';
+$password = '';
+
 if (isset($_POST['login']) && $_POST['password']) {
+
     $login = $_POST['login'];
     $password = $_POST['password'];
 }
 
 if ($login && $password) {
-    $login_result = $db->login($login, $password);
+    $login_result = $auth->login($login, $password);
 }
 
-if ($login_result) { ?>
+if (isset($login_result)) { ?>
     <p>Контент для авторизованного пользователя</p>
 <?php } else { ?>
     <h1>Авторизация на сайте</h1>

@@ -1,3 +1,3 @@
 <?php
-include 'Auth.php';
 include 'DataBase.php';
+include 'Auth.php';
