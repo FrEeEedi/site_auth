@@ -15,5 +15,9 @@ class DataBase
         if ($this->connection != false) {
             $this->connection->set_charset($this->charset);
         }
+
+        if ($this->connection->connect_error) {
+            return $this->connection->connect_error;
+        }
     }
 }

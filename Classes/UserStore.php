@@ -1,7 +1,5 @@
 <?php
 
-// require_once('DataBase.php');
-
 class UserStore
 {
     public $db_connection;
