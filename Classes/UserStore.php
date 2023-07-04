@@ -104,6 +104,39 @@ class UserStore
         return $result;
     }
 
+    public function createUser($login, $password, $email = '', $phone = '')
+    {
+        $check_user = $this->getUserID($login);
+
+        if ($check_user['result'] === false) {
+
+            $query = "INSERT INTO users SET login = '$login', password = '$password', email = '$email', phone = '$phone'";
+            $result = $this->db_connection->query($query);
+
+            if ($result) {
+
+                return [
+                    'result' => $result,
+                    'message' => 'Вы успешно зарешестрировались!'
+                ];
+
+            } else {
+
+                return [
+                    'result' => $result,
+                    'message' => 'При регистрации произошла ошибка, попробуйте снова.'
+                ];
+
+            }
+
+        }
+
+        return [
+            'result' => false,
+            'message' => 'Такой логин уже существует.'
+        ];
+    }
+
     public function resultToArray($result)
     {
         return $result->fetch_assoc();

@@ -24,4 +24,11 @@ class User
 
         return $result;
     }
+
+    public function createUser($login, $password, $email = '', $phone = '')
+    {
+        $result = $this->user_store->createUser($login, $password, $email, $phone);
+
+        return $result;
+    }
 }
