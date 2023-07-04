@@ -20,8 +20,14 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 
     if ($login_result['result'] === true && !isset($_COOKIE['userID'])) {
         setcookie('userID', $login_result['user']['id'], time() + 60 * 60, '/',);
+    } else {
+        echo $login_result['message'];
     }
+}
 
+if (!isset($_COOKIE['userID']) && $login_result['result'] !== true) {
+    header("Location: /");
+    exit();
 }
 
 
