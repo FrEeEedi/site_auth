@@ -30,7 +30,10 @@ class UserStore
             return $result;
         }
 
-        return 'Неправильный логин или пароль';
+        return [
+            'result' => false,
+            'message' => 'Неправильный логин или пароль'
+        ];
     }
 
     public function getUser($login)

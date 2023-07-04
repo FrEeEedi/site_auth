@@ -18,6 +18,13 @@ class User
         return $result;
     }
 
+    public function getUserID($login)
+    {
+        $result = $this->user_store->getUserID($login);
+
+        return $result;
+    }
+
     public function updateUserInfo($column, $value, $user_id)
     {
         $result = $this->user_store->updateUserInfo($column, $value, $user_id);
